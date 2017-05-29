@@ -20,7 +20,16 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+
+    firebase: {
+      apiKey: 'AIzaSyAIbkLzp46HhDXBcMBmQiGXc6lbtWZ7l7s',
+      authDomain: 'footballgo-fcfc3.firebaseapp.com',
+      databaseURL: 'https://footballgo-fcfc3.firebaseio.com',
+      storageBucket: 'footballgo-fcfc3.appspot.com',
+      messagingSenderId: '421380806800',
+      projectId: 'footballgo-fcfc3',
+    },
   };
 
   if (environment === 'development') {
