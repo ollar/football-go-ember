@@ -1,0 +1,28 @@
+<form class="pure-form pure-form-stacked" {{action 'login' on="submit"}}>
+  <div class="pure-control-group">
+    <label for="email">Email</label>
+    {{input
+      name="email"
+      type="email"
+      id="email"
+      placeholder="Email"
+      value=email}}
+  </div>
+
+  <div class="pure-control-group">
+    <label for="password">Password</label>
+    {{input
+      name="password"
+      id="password"
+      type="password"
+      placeholder="Password"
+      value=password}}
+  </div>
+
+  <div class="pure-controls">
+    <button type="submit" class="pure-button pure-button-primary">Submit</Button>
+
+    <a href="#" {{action 'googleSignIn'}}>Google Sign In</a>
+    <a href="#" {{action 'githubSignIn'}}>Github Sign In</a>
+  </div>
+</form>

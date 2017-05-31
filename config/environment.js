@@ -23,13 +23,16 @@ module.exports = function(environment) {
     },
 
     firebase: {
-      apiKey: 'AIzaSyAIbkLzp46HhDXBcMBmQiGXc6lbtWZ7l7s',
-      authDomain: 'footballgo-fcfc3.firebaseapp.com',
-      databaseURL: 'https://footballgo-fcfc3.firebaseio.com',
-      storageBucket: 'footballgo-fcfc3.appspot.com',
-      messagingSenderId: '421380806800',
-      projectId: 'footballgo-fcfc3',
+      apiKey: 'AIzaSyApBX1mlccidNVknU6O06oCeSvafPdN1Kc',
+      authDomain: 'footballgo-ember.firebaseapp.com',
+      databaseURL: 'https://footballgo-ember.firebaseio.com',
+      projectId: 'footballgo-ember',
+      storageBucket: 'footballgo-ember.appspot.com',
+      messagingSenderId: '399147350858',
     },
+    torii: {
+      sessionServiceName: 'session'
+    }
   };
 
   if (environment === 'development') {
