@@ -5,9 +5,7 @@
 
   <ol class="players-list"></ol>
 
-  <form class="join-match" {{action submitForm on="submit"}}>
-    {{input type="text" name="playersName" placeholder="Введите имя"}}
-    <button class="submit-go" type="submit">Я пойду!</button>
-  </form>
-
+  <button class="submit-go" type="submit" {{action submitForm on="submit"}}>
+    Я пойду!
+  </button>
 </div>

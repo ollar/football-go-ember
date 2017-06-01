@@ -6,21 +6,11 @@ module.exports = function(defaults) {
     // Add options here
     postcssOptions: {
       compile: {
-        enabled: false
-      },
-      filter: {
         enabled: true,
-        include: ['styles/*.pcss'],
         plugins: [
-          {
-            module: require('postcss-nested'),
-          },
-          {
-            module: require('postcss-import'),
-          },
-          {
-            module: require('postcss-short'),
-          },
+          { module: require('postcss-import') },
+          { module: require('postcss-nested') },
+          { module: require('postcss-short') },
           {
             module: require('autoprefixer'),
             options: {
@@ -28,7 +18,7 @@ module.exports = function(defaults) {
             }
           },
         ]
-      }
+      },
     }
   });
 
@@ -44,6 +34,11 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
+
+  app.import('bower_components/pure/src/base/css/base.css');
+  app.import('bower_components/pure/src/buttons/css/buttons-core.css');
+  app.import('bower_components/pure/src/forms/css/forms-r.css');
+  app.import('bower_components/pure/src/forms/css/forms.css');
 
   return app.toTree();
 };

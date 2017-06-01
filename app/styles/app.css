@@ -1,0 +1,117 @@
+@import '_info.css';
+
+body{
+  background-color: #fefefe;
+  font-family: georgia, serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+h1{
+  font-style: italic;
+  font-weight: normal;
+}
+
+.center-wrapper{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+a, .link{
+  color: deepskyblue;
+  cursor: pointer;
+  text-decoration: underline;
+  display: inline;
+
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+.play-team{
+
+}
+
+.players-list{
+  min-height: 30em;
+  background-image: linear-gradient(#ccc 0, #fefefe 1px, #fefefe 48px, #ccc 48px);
+  background-repeat: repeat;
+  background-size: 10px 48px;
+  padding: 0;
+  padding-bottom: 1px;
+}
+
+.player{
+  line-height: 2em;
+  position: relative;
+  font-size: 1.5em;
+  font-style: italic;
+  color: #ddd;
+  margin: 0 0 0 2em;
+  padding-left: 1em;
+
+  span{
+    color: #000;
+    font-size: 1em;
+  }
+
+  .remove{
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    padding: 0 15px;
+    height: 2em;
+    background-color: #f00;
+    display: none;
+    cursor: pointer;
+  }
+
+  &.me:hover{
+    .remove{
+      display: block;
+    }
+  }
+}
+
+.join-match{
+  display: flex;
+  width: 100%;
+}
+
+.edit-name{
+  padding: 18px;
+  background-color: #fafafa;
+}
+
+input[name="playersName"] {
+  padding: 18px 30px;
+  display: block;
+  box-sizing: border-box;
+  flex-grow: 2;
+  border: 1px solid #ccc;
+  border-right: none;
+}
+
+.submit-go{
+  padding: 20px 30px;
+  background-color: deepskyblue;
+  border: none;
+  color: #fff;
+}
+
+footer{
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-around;
+
+  .link{
+    margin: 0 20px;
+  }
+}
+
+.ym{
+  width: 100%;
+  border: none;
+}
