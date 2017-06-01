@@ -1,1 +1,13 @@
-{{outlet}}
+<div class="play-team center-wrapper">
+  <h1>
+    <span>Кто пойдет на футбол </span><span>7 Июня</span>
+  </h1>
+
+  <ol class="players-list"></ol>
+
+  <form class="join-match" {{action submitForm on="submit"}}>
+    {{input type="text" name="playersName" placeholder="Введите имя"}}
+    <button class="submit-go" type="submit">Я пойду!</button>
+  </form>
+
+</div>
