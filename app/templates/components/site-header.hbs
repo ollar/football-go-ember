@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="right-side">
-      {{#if get session isAuthenticated}}
+      {{#if session.isAuthenticated}}
         <button class="sign-out" {{action 'signOut'}}>Sign Out</button>
       {{/if}}
     </div>

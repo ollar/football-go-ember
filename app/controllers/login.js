@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
   },
 
   isAuthenticated: Ember.computed('session.isAuthenticated', function() {
-    return this.get('session').get('isAuthenticated');
+    return this.get('session.isAuthenticated');
   }),
 
   actions: {
@@ -33,17 +33,21 @@ export default Ember.Controller.extend({
             'https://www.googleapis.com/auth/userinfo.email,' +
             'https://www.googleapis.com/auth/userinfo.profile'
         }
-      }).then((res) => {
+      }).then(() => {
         this.transitionToRoute('index');
-      }).catch((e) => console.log(e));
+      }).catch((e) => {
+        this.send('error', e)
+      });
     },
 
     githubSignIn() {
       this.get('session').open('firebase', {
         provider: 'github',
-      }).then((res) => {
-        console.log(res);
-      }).catch((e) => console.log(e));
+      }).then(() => {
+        this.transitionToRoute('index');
+      }).catch((e) => {
+        this.send('error', e)
+      });
     },
 
     signOut() {

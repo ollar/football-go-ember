@@ -10,7 +10,8 @@ export default Ember.Route.extend({
         if (!this.get('session.isAuthenticated')) {
           this.transitionTo('login');
         }
-      });
+      })
+      // .catch(() => {});
   },
 
   model() {
