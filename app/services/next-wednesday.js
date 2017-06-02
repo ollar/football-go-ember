@@ -17,7 +17,7 @@ export default Ember.Service.extend({
     return `${dateArr[0]}-${dateArr[1]}-${dateArr[2]}`;
   }),
 
-  humanDate: Ember.computed('date', function() {
+  humanDate: Ember.computed('serverDate', function() {
     const monthsDict = {
       1: 'January',
       2: 'February',
@@ -33,7 +33,7 @@ export default Ember.Service.extend({
       12: 'December',
     };
 
-    const dateArr = this.nw.split('-');
+    const dateArr = this.get('serverDate').split('-');
 
     return `${dateArr[2]} ${monthsDict[dateArr[1]]}`;
   }),
