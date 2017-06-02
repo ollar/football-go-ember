@@ -99,6 +99,36 @@ input[name="playersName"] {
   background-color: deepskyblue;
   border: none;
   color: #fff;
+  appearance: none;
+  display: block;
+  width: 100%;
+}
+
+header {
+  & > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .left-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .user-photo{
+      height: 40px;
+      width: 40px;
+      border-radius: 40px;
+      overflow: hidden;
+      margin-right: 15px;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
 }
 
 footer{

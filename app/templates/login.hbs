@@ -1,4 +1,4 @@
-<form class="pure-form pure-form-stacked" {{action 'passwordSignIn' on="submit"}}>
+{{!-- <form class="pure-form pure-form-stacked" {{action 'passwordSignIn' on="submit"}}>
   <div class="pure-control-group">
     <label for="email">Email</label>
     {{input
@@ -24,8 +24,11 @@
     {{#if isAuthenticated}}
     <a href="#" {{action 'signOut'}}>Sign OUT</a>
     {{else}}
-    <a href="#" {{action 'googleSignIn'}}>Google Sign In</a>
     <a href="#" {{action 'githubSignIn'}}>Github Sign In</a>
     {{/if}}
   </div>
-</form>
+</form> --}}
+
+<div class="center-wrapper login-page">
+  <a href="#" {{action 'googleSignIn'}}>Google Sign In</a>
+</div>

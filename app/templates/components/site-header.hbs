@@ -1,0 +1,17 @@
+<header>
+  <div class="center-wrapper">
+    <div class="left-side">
+      <div class="user-photo">
+        <img src="{{user.photoURL}}" alt="">
+      </div>
+      <div class="user-name">
+        {{user.displayName}}
+      </div>
+    </div>
+    <div class="right-side">
+      {{#if get session isAuthenticated}}
+        <button class="sign-out" {{action 'signOut'}}>Sign Out</button>
+      {{/if}}
+    </div>
+  </div>
+</header>

@@ -34,8 +34,7 @@ export default Ember.Controller.extend({
             'https://www.googleapis.com/auth/userinfo.profile'
         }
       }).then((res) => {
-        console.log(this.get('session'));
-        console.log(res);
+        this.transitionToRoute('index');
       }).catch((e) => console.log(e));
     },
 
