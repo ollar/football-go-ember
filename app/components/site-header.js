@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   session: Ember.inject.service(),
 
   user: Ember.computed('session.{currentUser,isAuthenticated}', function() {
-    if (!this.get('session.isAuthenticated')) {
+    if (!this.get('session.currentUser.providerData')) {
       return {};
     }
 
@@ -13,7 +13,10 @@ export default Ember.Component.extend({
 
   actions: {
     signOut() {
-      this.get('session').close();
+      this.get('session').close()
+        .then(() => {
+          return Ember.getOwner(this).get('router').transitionTo('login');
+        });
     },
   }
 });

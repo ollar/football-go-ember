@@ -11,7 +11,7 @@ export default Ember.Route.extend({
           this.transitionTo('login');
         }
       })
-      // .catch(() => {});
+      .catch(() => {});
   },
 
   model() {

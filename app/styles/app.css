@@ -1,4 +1,5 @@
 @import '_info.css';
+@import '_login.css';
 
 body{
   background-color: #fefefe;
@@ -128,6 +129,15 @@ header {
         height: auto;
       }
     }
+  }
+
+  .sign-out {
+    border: none;
+    border-radius: 5px;
+    background: transparent none;
+    color: deepskyblue;
+    font-size: 1em;
+    padding: 10px 15px;
   }
 }
 
