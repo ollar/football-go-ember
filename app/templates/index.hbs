@@ -3,11 +3,15 @@
     <span>Кто пойдет на футбол </span><span>{{humanDate}}</span>
   </h1>
 
-  <ol class="players-list"></ol>
+  <ol class="players-list">
+    {{#each players as |player index|}}
+      {{player-item player=player index=(add index 1)}}
+    {{/each}}
+  </ol>
 
   <button
     class="submit-go"
-    {{action 'submitForm'}}>
+    {{action 'submitGo'}}>
     Я пойду!
   </button>
 </div>

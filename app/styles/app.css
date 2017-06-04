@@ -48,9 +48,18 @@ a, .link{
   position: relative;
   font-size: 1.5em;
   font-style: italic;
-  color: #ddd;
-  margin: 0 0 0 2em;
-  padding-left: 1em;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .index {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    color: #ddd;
+    padding-right: 10px;
+  }
 
   span{
     color: #000;
@@ -72,6 +81,19 @@ a, .link{
   &.me:hover{
     .remove{
       display: block;
+    }
+  }
+
+  .image-wrapper {
+    width: 38px;
+    height: 38px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 10px;
+
+    img{
+      height: 100%;
+      width: auto;
     }
   }
 }

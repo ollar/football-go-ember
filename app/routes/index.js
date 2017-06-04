@@ -17,12 +17,12 @@ export default Ember.Route.extend({
   model() {
     var date = this.get('nextWednesday').get('serverDate');
 
-    return this.get('store').findRecord('match', date)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    return this.get('store').query('match', {
+      orderBy: 'date',
+      equalTo: date,
+    }).then((matches) => {
+      return matches.get('firstObject');
+    })
+      .catch(err => this.send('error', err));
   }
 });
