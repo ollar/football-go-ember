@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
 
       console.log(this.get('session'));
 
-      this.get('session').register();
+      // this.get('session').register();
     },
 
 

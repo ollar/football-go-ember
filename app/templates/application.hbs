@@ -1,10 +1,14 @@
+{{#if session.isAuthenticated}}
 {{site-header}}
+{{/if}}
 
 <div class="center-wrapper">
   {{outlet}}
 </div>
 
+{{#if session.isAuthenticated}}
 <footer>
   {{#link-to 'index'}}Таблица игроков{{/link-to}}
   {{#link-to 'contacts'}}Контакты{{/link-to}}
 </footer>
+{{/if}}

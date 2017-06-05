@@ -46,7 +46,24 @@ export default Ember.Controller.extend({
     return this.model.get('players');
   }),
 
+  isInTeam: Ember.computed('store.player', function() {
+    var player = this.get('store').peekAll('player').get('firstObject');
+
+    console.log(this.get('session'));
+    // console.log(player.id);
+
+    return false;
+
+    // return this.players.filter((player) => {
+    //   return player.id === uId;
+    // });
+  }),
+
   getUser() {
     return this.get('session.currentUser.providerData')[0];
-  }
+  },
+
+  currentUser: Ember.computed(function() {
+    return JSON.stringify(this.getUser());
+  }),
 });
