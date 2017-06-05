@@ -3,17 +3,20 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   email: '',
   password: '',
-  session: Ember.inject.service(),
-
-  beforeModel() {
-    this.get('session').fetch();
-  },
 
   isAuthenticated: Ember.computed('session.isAuthenticated', function() {
     return this.get('session.isAuthenticated');
   }),
 
   actions: {
+    register() {
+
+      console.log(this.get('session'));
+
+      this.get('session').register();
+    },
+
+
     passwordSignIn() {
       if (!this.get('email') || !this.get('password')) {
         return;
