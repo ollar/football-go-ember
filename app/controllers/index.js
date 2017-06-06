@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
     return this.model.match.get('players');
   }),
 
-  isInTeam: Ember.computed('players', 'model.match', function() {
+  isInTeam: Ember.computed('players', function() {
     console.log('aha');
     return this.get('players').includes(this.model.me);
   }),

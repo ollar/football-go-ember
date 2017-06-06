@@ -1,5 +1,6 @@
 @import '_info.css';
 @import '_login.css';
+@import '_loading.css';
 
 body{
   background-color: #fefefe;
