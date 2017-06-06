@@ -1,19 +1,17 @@
-<header>
-  <div class="center-wrapper">
-    {{#if user}}
-      <div class="left-side">
-        <div class="user-photo">
-          <img src="{{user.photoURL}}" alt="">
-        </div>
-        <div class="user-name">
-          {{user.displayName}}
-        </div>
-      </div>
-    {{/if}}
-    <div class="right-side">
-      {{#if session.isAuthenticated}}
-        <button class="sign-out" {{action 'signOut'}}>Sign Out</button>
-      {{/if}}
+<div class="center-wrapper">
+  {{#if user}}
+  <div class="left-side">
+    <div class="user-photo">
+      <img src="{{user.photoURL}}" alt="">
+    </div>
+    <div class="user-name">
+      {{user.displayName}}
     </div>
   </div>
-</header>
+  {{/if}}
+  <div class="right-side">
+    {{#if session.isAuthenticated}}
+    <button class="sign-out" {{action 'signOut'}}>Sign Out</button>
+    {{/if}}
+  </div>
+</div>

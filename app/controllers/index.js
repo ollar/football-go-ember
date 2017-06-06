@@ -8,51 +8,22 @@ export default Ember.Controller.extend({
   }),
   actions: {
     submitGo() {
-      this.get('store').query('player', {
-        orderBy: 'email',
-        equalTo: this.getUser().email,
-      })
-      .then((players) => {
-        var player = players.get('firstObject');
-
-        this.get('store').query('match', {
-          orderBy: 'date',
-          equalTo: this.get('nextWednesday').get('serverDate'),
-        }).then((matches) => {
-          if (matches.get('length') === 0) {
-            var match = this.get('store').createRecord('match', {
-              date: this.get('nextWednesday').get('serverDate'),
-              UTCdate: this.get('nextWednesday').nw,
-            });
-
-            match.get('players').pushObject(player)
-
-            return match.save();
-          } else if (matches.get('length') === 1) {
-            let match = matches.get('firstObject');
-            match.get('players').pushObject(player);
-          } else {
-            throw new Error('dulication is matched');
-          }
-
-          matches.save();
-        });
-      });
-
-    }
+      this.model.match.get('players').pushObject(this.model.me);
+      this.model.match.save();
+    },
+    changeMind(player) {
+      this.model.match.get('players').removeObject(player);
+      this.model.match.save();
+    },
   },
 
-  players: Ember.computed('model.players', function() {
+  players: Ember.computed('model.match.players', function() {
     return this.model.match.get('players');
   }),
 
-  isInTeam: Ember.computed(function() {
-    var fid = this.get('session.currentUser.fid');
-
-    // console.log(this.get('session'));
-    // console.log(this.model.get('players'));
-
-    return false;
+  isInTeam: Ember.computed('model.match.players[]', function() {
+    console.log('aha');
+    return this.get('players').includes(this.model.me);
   }),
 
   getUser() {

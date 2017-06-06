@@ -76,6 +76,9 @@ a, .link{
     background-color: #f00;
     display: none;
     cursor: pointer;
+    border: none;
+    appearance: none;
+    font: inherit;
   }
 
   &.me:hover{
@@ -125,6 +128,9 @@ input[name="playersName"] {
   appearance: none;
   display: block;
   width: 100%;
+  font: inherit;
+  font-size: 2em;
+  font-style: italic;
 }
 
 header {

@@ -3,17 +3,24 @@
     <span>Кто пойдет на футбол </span><span>{{humanDate}}</span>
   </h1>
 
-  {{log isInTeam}}
-
   <ol class="players-list">
     {{#each players as |player index|}}
-      {{player-item player=player index=(add index 1)}}
+      {{player-item
+        player=player
+        index=(add index 1)
+        me=model.me
+        changeMind=(action 'changeMind')
+      }}
     {{/each}}
   </ol>
 
+  {{log isInTeam}}
+
+  {{#unless isInTeam}}
   <button
     class="submit-go"
     {{action 'submitGo'}}>
     Я пойду!
   </button>
+  {{/unless}}
 </div>

@@ -11,7 +11,7 @@ export default ToriiFirebaseAdapter.extend({
   init() {
     this._super(...arguments);
 
-    console.log('aaa', this);
+    // console.log('aaa', this);
   },
   ololo() {
     return '4';

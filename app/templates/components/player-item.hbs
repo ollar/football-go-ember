@@ -3,3 +3,7 @@
   <img src="{{player.photoURL}}" alt="">
 </div>
 <span>{{player.name}}</span>
+
+{{#if isMe}}
+<button class="remove" {{action 'changeMind'}}>я передумал</button>
+{{/if}}

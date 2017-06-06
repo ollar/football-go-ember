@@ -6,22 +6,27 @@ export default Ember.Route.extend({
 
   model() {
     var date = this.get('nextWednesday').get('serverDate');
-
-    console.log(this.get('getUser'));
+    var user = this.get('getUser').get('user');
 
     return Ember.RSVP.hash({
       match: this.get('store').query('match', {
         orderBy: 'date',
         equalTo: date,
       }).then((matches) => {
-        return matches.get('firstObject');
+        if (matches.get('length')) {
+          return matches.get('firstObject');
+        }
+        return this.get('store').createRecord('match', {
+          date: this.get('nextWednesday').get('serverDate'),
+          UTCdate: this.get('nextWednesday').nw,
+        });
       }).catch(err => this.send('error', err)),
       me: this.get('store').query('player', {
         orderBy: 'email',
-        equalTo: 'olegollar@gmail.com',
-      }).then((res) => {
-        console.log(res);
-      })
+        equalTo: user.email,
+      }).then((players) => {
+        return players.get('firstObject');
+      }).catch(err => this.send('error', err)),
     })
   }
 });

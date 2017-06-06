@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   session: Ember.inject.service(),
+  tagName: 'header',
 
   user: Ember.computed('session.{currentUser,isAuthenticated}', function() {
     if (!this.get('session.currentUser.providerData')) {
