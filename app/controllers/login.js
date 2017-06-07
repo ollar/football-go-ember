@@ -4,28 +4,44 @@ export default Ember.Controller.extend({
   email: '',
   password: '',
 
-  isAuthenticated: Ember.computed('session.isAuthenticated', function() {
-    return this.get('session.isAuthenticated');
-  }),
+  getUser: Ember.inject.service(),
+
+  createUser() {
+    var userData = this.get('getUser').get('user');
+
+    this.get('store').query('player', {
+      orderBy: 'email',
+      equalTo: userData.email,
+    }).then((res) => {
+      if (res && res.get('length') === 0) {
+        let player = this.get('store').createRecord('player', {
+          name: userData.displayName,
+          photoURL: userData.photoURL,
+          email: userData.email,
+        });
+
+        player.save();
+      }
+    });
+  },
 
   actions: {
-    register() {
-      this.get('session').register();
-    },
-
     passwordSignIn() {
       if (!this.get('email') || !this.get('password')) {
         return;
       }
-      this.get('session').open('firebase', {
+      return this.get('session').open('firebase', {
         provider: 'password',
         email: this.get('email'),
         password: this.get('password'),
+      })
+      .then(() => {
+        this.transitionToRoute('index');
       });
     },
 
     googleSignIn() {
-      this.get('session').open('firebase', {
+      return this.get('session').open('firebase', {
         provider: 'google',
         settings: {
           scope:
@@ -33,41 +49,22 @@ export default Ember.Controller.extend({
             'https://www.googleapis.com/auth/userinfo.profile'
         }
       }).then(() => {
-        var userData = this.get('session.currentUser.providerData')[0];
-
-        this.get('store').query('player', {
-          orderBy: 'email',
-          equalTo: userData.email,
-        }).then((res) => {
-          if (res && res.get('length') === 0) {
-            let player = this.get('store').createRecord('player', {
-              name: userData.displayName,
-              photoURL: userData.photoURL,
-              email: userData.email,
-            });
-
-            player.save();
-          }
-
-          this.transitionToRoute('index');
-        });
-      }).catch((e) => {
-        this.send('error', e)
-      });
-    },
-
-    githubSignIn() {
-      this.get('session').open('firebase', {
-        provider: 'github',
-      }).then(() => {
+        this.createUser();
         this.transitionToRoute('index');
       }).catch((e) => {
         this.send('error', e)
       });
     },
 
-    signOut() {
-      this.get('session').close();
+    githubSignIn() {
+      return this.get('session').open('firebase', {
+        provider: 'github',
+      }).then(() => {
+        this.createUser();
+        this.transitionToRoute('index');
+      }).catch((e) => {
+        this.send('error', e)
+      });
     },
   }
 });

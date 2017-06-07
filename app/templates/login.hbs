@@ -1,4 +1,7 @@
-{{!-- <form class="pure-form pure-form-stacked" {{action 'passwordSignIn' on="submit"}}>
+<form
+  class="login-form pure-form pure-form-aligned"
+  {{action 'passwordSignIn' on="submit"}}
+>
   <div class="pure-control-group">
     <label for="email">Email</label>
     {{input
@@ -21,19 +24,14 @@
 
   <div class="pure-controls">
     <button type="submit" class="pure-button pure-button-primary">Submit</Button>
-    {{#if isAuthenticated}}
-    <a href="#" {{action 'signOut'}}>Sign OUT</a>
-    {{else}}
-    <a href="#" {{action 'githubSignIn'}}>Github Sign In</a>
-    {{/if}}
   </div>
-</form> --}}
-
-<form {{action 'register' on="submit"}}>
-
-  <button type="sumbit">test</button>
 </form>
 
 <div class="center-wrapper login-page">
   <a href="#" {{action 'googleSignIn'}}>Google Sign In</a>
+  <a href="#" {{action 'githubSignIn'}}>Github Sign In</a>
+</div>
+
+<div class="">
+  {{link-to "Register" "register"}}
 </div>
