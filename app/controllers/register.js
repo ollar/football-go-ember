@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
         })
 
         .catch((e) => {
-          this.send('error', e);
+          this.send('notify', 'error', e.toString());
         })
     },
   },

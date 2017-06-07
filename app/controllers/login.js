@@ -36,7 +36,11 @@ export default Ember.Controller.extend({
         password: this.get('password'),
       })
       .then(() => {
+        this.send('notify', 'info', 'Welcome back!');
         this.transitionToRoute('index');
+      })
+      .catch((e) => {
+        this.send('notify', 'error', e.toString());
       });
     },
 
@@ -50,9 +54,10 @@ export default Ember.Controller.extend({
         }
       }).then(() => {
         this.createUser();
+        this.send('notify', 'info', 'UUu, sending data to ANB');
         this.transitionToRoute('index');
       }).catch((e) => {
-        this.send('error', e)
+        this.send('notify', 'error', e.toString());
       });
     },
 
@@ -61,9 +66,10 @@ export default Ember.Controller.extend({
         provider: 'github',
       }).then(() => {
         this.createUser();
+        this.send('notify', 'info', 'All your repos belongs to us!');
         this.transitionToRoute('index');
       }).catch((e) => {
-        this.send('error', e)
+        this.send('notify', 'error', e.toString());
       });
     },
   }
