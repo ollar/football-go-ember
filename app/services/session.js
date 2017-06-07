@@ -4,6 +4,8 @@ import ToriiSession from 'torii/services/torii-session';
 
 export default ToriiSession.extend({
   register() {
-    console.log('opa');
-  }
+    var owner     = Ember.getOwner(this);
+    var adapter = owner.lookup('torii-adapter:application');
+    return adapter.register();
+  },
 });
