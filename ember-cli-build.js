@@ -37,9 +37,9 @@ module.exports = function(defaults) {
 
   app.import('bower_components/pure/src/base/css/base.css');
   app.import('bower_components/pure/src/buttons/css/buttons-core.css');
+  app.import('bower_components/pure/src/buttons/css/buttons.css');
   app.import('bower_components/pure/src/forms/css/forms-r.css');
   app.import('bower_components/pure/src/forms/css/forms.css');
-  app.import('bower_components/pure/src/forms/css/buttons.css');
 
   return app.toTree();
 };
