@@ -10,12 +10,8 @@ export default Ember.Controller.extend({
 
   actions: {
     register() {
-
-      console.log(this.get('session'));
-
-      // this.get('session').register();
+      this.get('session').register();
     },
-
 
     passwordSignIn() {
       if (!this.get('email') || !this.get('password')) {
