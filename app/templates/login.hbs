@@ -1,3 +1,5 @@
+{{#with changeset as |changeset|}}
+
 <div class="login-page">
   <h1>{{t 'login.title'}}</h1>
   <form
@@ -11,7 +13,7 @@
         type="email"
         id="email"
         placeholder=(t 'form.labels.email')
-        value=email}}
+        value=changeset.email}}
     </div>
 
     <div class="pure-control-group">
@@ -21,13 +23,23 @@
         id="password"
         type="password"
         placeholder=(t 'form.labels.password')
-        value=password}}
+        value=changeset.password}}
     </div>
 
     <div class="pure-controls">
       <button type="submit" class="pure-button pure-button-primary">{{t 'buttons.submit'}}</Button>
       {{t 'or'}} {{link-to (t 'register.title') "register"}}
     </div>
+
+    <ul>
+      {{#each changeset.errors as |errorSet|}}
+        {{#each errorSet.validation as |error|}}
+          <li>
+            {{error}}
+          </li>
+        {{/each}}
+      {{/each}}
+    </ul>
   </form>
 
   <div class="social-login">
@@ -35,3 +47,4 @@
     <button type="button" class="github-sign-in" {{action 'githubSignIn'}}>{{t 'buttons.github_sign_in'}}</button>
   </div>
 </div>
+{{/with}}

@@ -18,6 +18,7 @@
     "autoprefixer": "^7.1.1",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^3.0.0",
+    "ember-changeset-validations": "^1.2.7",
     "ember-cli": "^2.13.2",
     "ember-cli-app-version": "^3.0.0",
     "ember-cli-babel": "^6.0.0",

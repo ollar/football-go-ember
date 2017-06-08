@@ -1,10 +1,21 @@
 import Ember from 'ember';
+import Changeset from 'ember-changeset';
+import lookupValidator from 'ember-changeset-validations';
+import validateLogin from '../validators/login';
 
 export default Ember.Controller.extend({
   email: '',
   password: '',
 
   getUser: Ember.inject.service(),
+
+  init() {
+    this._super(...arguments);
+    this.changeset = new Changeset({
+      email: '',
+      password: '',
+    }, lookupValidator(validateLogin));
+  },
 
   createUser() {
     var userData = this.get('getUser').get('user');
@@ -27,20 +38,22 @@ export default Ember.Controller.extend({
 
   actions: {
     passwordSignIn() {
-      if (!this.get('email') || !this.get('password')) {
-        return;
-      }
-      return this.get('session').open('firebase', {
-        provider: 'password',
-        email: this.get('email'),
-        password: this.get('password'),
-      })
-      .then(() => {
-        this.send('notify', 'info', this.get('i18n').t('messages.welcome_default'));
-        this.transitionToRoute('index');
-      })
-      .catch((e) => {
-        this.send('notify', 'error', e.toString());
+      this.changeset.validate().then(() => {
+        if (this.changeset.get("isValid")) {
+          this.changeset.save();
+          return this.get('session').open('firebase', {
+            provider: 'password',
+            email: this.changeset.get('email'),
+            password: this.changeset.get('password'),
+          })
+          .then(() => {
+            this.send('notify', 'info', this.get('i18n').t('messages.welcome_default'));
+            this.transitionToRoute('index');
+          })
+          .catch((e) => {
+            this.send('notify', 'error', e.toString());
+          });
+        }
       });
     },
 
