@@ -53,5 +53,5 @@ export default {
     welcome_default: 'Welcome back!',
     welcome_google: 'Yep, sending data to ANB',
     welcome_github: 'All your repos belongs to us!',
-  }
+  },
 };

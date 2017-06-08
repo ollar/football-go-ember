@@ -32,7 +32,10 @@ module.exports = function(environment) {
     },
     torii: {
       sessionServiceName: 'session'
-    }
+    },
+    i18n: {
+      defaultLocale: 'ru',
+    },
   };
 
   if (environment === 'development') {
