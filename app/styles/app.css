@@ -1,6 +1,7 @@
 @import '_info.css';
 @import '_login.css';
 @import '_loading.css';
+@import '_notifications.css';
 
 body{
   background-color: #fefefe;

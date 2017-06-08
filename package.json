@@ -42,6 +42,7 @@
     "postcss-import": "^10.0.0",
     "postcss-nested": "^1.0.1",
     "postcss-short": "^4.1.0",
+    "precss": "^1.4.0",
     "torii": "^0.9.5"
   },
   "engines": {

@@ -8,8 +8,7 @@ module.exports = function(defaults) {
       compile: {
         enabled: true,
         plugins: [
-          { module: require('postcss-import') },
-          { module: require('postcss-nested') },
+          { module: require('precss') },
           { module: require('postcss-short') },
           {
             module: require('autoprefixer'),
@@ -35,11 +34,7 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  app.import('bower_components/pure/src/base/css/base.css');
-  app.import('bower_components/pure/src/buttons/css/buttons-core.css');
-  app.import('bower_components/pure/src/buttons/css/buttons.css');
-  app.import('bower_components/pure/src/forms/css/forms-r.css');
-  app.import('bower_components/pure/src/forms/css/forms.css');
+  app.import('bower_components/pure/pure-min.css');
 
   return app.toTree();
 };

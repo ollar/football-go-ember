@@ -1,0 +1,32 @@
+$info: #fff;
+$success: #a4de46;
+$warning: #f9f24e;
+$alert: #fff;
+$error: #e84e4e;
+
+.ember-notify {
+  background-color: #fff;
+
+  &.info {
+    border-color: color($info shade(10%));
+    background-color: $info;
+  }
+
+  &.success {
+    border-color: color($success shade(10%));
+    background-color: $success;
+    color: #fff;
+  }
+
+  &.warning {
+    border-color: color($warning shade(10%));
+    background-color: $warning;
+    color: #fff;
+  }
+
+  &.error {
+    border-color: color($error shade(10%));
+    background-color: $error;
+    color: #fff;
+  }
+}
