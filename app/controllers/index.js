@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   nextWednesday: Ember.inject.service(),
-  session: Ember.inject.service(),
   humanDate: Ember.computed('nextWednesday.humanDate', function() {
     return this.get('nextWednesday.humanDate');
   }),
@@ -17,16 +16,9 @@ export default Ember.Controller.extend({
     },
   },
 
-  players: Ember.computed('model.match.players', function() {
-    return this.model.match.get('players');
-  }),
+  players: Ember.computed.alias('model.match.players'),
 
   isInTeam: Ember.computed('players', function() {
-    console.log('aha');
     return this.get('players').includes(this.model.me);
   }),
-
-  getUser() {
-    return this.get('session.currentUser.providerData')[0];
-  },
 });
