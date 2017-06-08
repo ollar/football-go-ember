@@ -1,37 +1,37 @@
-<form
-  class="login-form pure-form pure-form-aligned"
-  {{action 'passwordSignIn' on="submit"}}
->
-  <div class="pure-control-group">
-    <label for="email">Email</label>
-    {{input
-      name="email"
-      type="email"
-      id="email"
-      placeholder="Email"
-      value=email}}
+<div class="login-page">
+  <h1>{{t 'login.title'}}</h1>
+  <form
+    class="login-form pure-form pure-form-aligned"
+    {{action 'passwordSignIn' on="submit"}}
+  >
+    <div class="pure-control-group">
+      <label for="email">{{t 'form.labels.email'}}</label>
+      {{input
+        name="email"
+        type="email"
+        id="email"
+        placeholder=(t 'form.labels.email')
+        value=email}}
+    </div>
+
+    <div class="pure-control-group">
+      <label for="password">{{t 'form.labels.password'}}</label>
+      {{input
+        name="password"
+        id="password"
+        type="password"
+        placeholder=(t 'form.labels.password')
+        value=password}}
+    </div>
+
+    <div class="pure-controls">
+      <button type="submit" class="pure-button pure-button-primary">{{t 'buttons.submit'}}</Button>
+      {{t 'or'}} {{link-to (t 'register.title') "register"}}
+    </div>
+  </form>
+
+  <div class="social-login">
+    <button type="button" class="google-sign-in" {{action 'googleSignIn'}}>{{t 'buttons.google_sign_in'}}</button>
+    <button type="button" class="github-sign-in" {{action 'githubSignIn'}}>{{t 'buttons.github_sign_in'}}</button>
   </div>
-
-  <div class="pure-control-group">
-    <label for="password">Password</label>
-    {{input
-      name="password"
-      id="password"
-      type="password"
-      placeholder="Password"
-      value=password}}
-  </div>
-
-  <div class="pure-controls">
-    <button type="submit" class="pure-button pure-button-primary">Submit</Button>
-  </div>
-</form>
-
-<div class="center-wrapper login-page">
-  <a href="#" {{action 'googleSignIn'}}>Google Sign In</a>
-  <a href="#" {{action 'githubSignIn'}}>Github Sign In</a>
-</div>
-
-<div class="">
-  {{link-to "Register" "register"}}
 </div>

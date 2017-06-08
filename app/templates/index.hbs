@@ -1,6 +1,6 @@
 <div class="play-team center-wrapper">
   <h1>
-    <span>Кто пойдет на футбол </span><span>{{humanDate}}</span>
+    {{t 'index.suggestion_message' humanDate=humanDate}}
   </h1>
 
   <ol class="players-list">
@@ -18,7 +18,7 @@
   <button
     class="submit-go"
     {{action 'submitGo'}}>
-    Я пойду!
+    {{t 'buttons.submit_go'}}
   </button>
   {{/unless}}
 </div>

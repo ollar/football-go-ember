@@ -1,3 +1,35 @@
-.login-page{
+.login-page {
+  h1 {
+    text-align: center;
+  }
+}
+
+.login-form{
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.google-sign-in,
+.github-sign-in {
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.google-sign-in{
+  background-color: #4285F4;
+}
+
+.github-sign-in {
+  background-color: #24292e;
+}
+
+.social-login {
+  margin: 30px 15px 0;
   text-align: center;
+
+  button {
+    margin: 0 15px;
+  }
 }

@@ -1,0 +1,10 @@
+.register-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.register-page {
+  h1 {
+    text-align: center;
+  }
+}
