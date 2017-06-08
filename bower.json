@@ -1,0 +1,20 @@
+{
+  "name": "football-go-ember",
+  "description": "Small description for football-go-ember goes here",
+  "main": "",
+  "authors": [
+    "Ларькин Олег Иванович <o.larkin@bssys.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ollar/football-go-ember",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "pure": "^1.0.0"
+  }
+}
