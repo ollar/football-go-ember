@@ -89,18 +89,25 @@ a, .link{
       display: block;
     }
   }
+}
 
-  .image-wrapper {
-    width: 38px;
-    height: 38px;
-    border-radius: 100%;
-    overflow: hidden;
-    margin-right: 10px;
+.user-avatar{
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: normal;
+  border-radius: 100%;
+  overflow: hidden;
+  margin-right: 10px;
+  background-color: #8c26db;
+  color: #fff;
 
-    img{
-      height: 100%;
-      width: auto;
-    }
+  img{
+    height: 100%;
+    width: auto;
   }
 }
 
@@ -147,19 +154,6 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-
-    .user-photo{
-      height: 40px;
-      width: 40px;
-      border-radius: 40px;
-      overflow: hidden;
-      margin-right: 15px;
-
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-    }
   }
 
   .sign-out {
