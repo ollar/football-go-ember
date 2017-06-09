@@ -26,20 +26,12 @@
         value=changeset.password}}
     </div>
 
+    {{form-errors changeset=changeset}}
+
     <div class="pure-controls">
       <button type="submit" class="pure-button pure-button-primary">{{t 'buttons.submit'}}</Button>
       {{t 'or'}} {{link-to (t 'register.title') "register"}}
     </div>
-
-    <ul>
-      {{#each changeset.errors as |errorSet|}}
-        {{#each errorSet.validation as |error|}}
-          <li>
-            {{error}}
-          </li>
-        {{/each}}
-      {{/each}}
-    </ul>
   </form>
 
   <div class="social-login">

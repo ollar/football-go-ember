@@ -1,34 +1,54 @@
 import Ember from 'ember';
+import Changeset from 'ember-changeset';
+import lookupValidator from 'ember-changeset-validations';
+import validateRegister from '../validators/register';
 
 export default Ember.Controller.extend({
-  name: '',
-  email: '',
-  password: '',
+  fields: {
+    name: '',
+    email: '',
+    password: '',
+  },
+
+  init() {
+    this._super(...arguments);
+
+    this.changeset = new Changeset(this.get('fields'), lookupValidator(validateRegister), validateRegister);
+  },
 
   actions: {
     register() {
-      this.get('session').register(this.get('email'), this.get('password'))
-        .then((newPlayer) => {
-          newPlayer.updateProfile({
-            displayName: this.get('name'),
-          });
+      this.changeset.validate().then(() => {
+        if (this.changeset.get("isValid")) {
+          this.changeset.save();
 
-          let player = this.get('store').createRecord('player', {
-            name: this.get('name'),
-            photoURL: '',
-            email: this.get('email'),
-          });
+          this.get('session').register(this.changeset.get('email'), this.changeset.get('password'))
+            .then((newPlayer) => {
+              newPlayer.updateProfile({
+                displayName: this.changeset.get('name'),
+              });
 
-          player.save();
-        })
-        .then(() => {
-          this.get('session').fetch();
-          this.transitionToRoute('index');
-        })
+              let player = this.get('store').createRecord('player', {
+                name: this.changeset.get('name'),
+                photoURL: '',
+                email: this.changeset.get('email'),
+              });
 
-        .catch((e) => {
-          this.send('notify', 'error', e.toString());
-        })
+              player.save();
+            })
+            .then(() => {
+              this.get('session').fetch().then(() => {
+                this.transitionToRoute('index');
+              });
+            })
+
+            .catch((e) => {
+              this.send('notify', 'error', e.toString());
+            });
+        } else {
+          this.send('notify', 'error', 'form is invalid');
+        }
+      });
     },
   },
 });

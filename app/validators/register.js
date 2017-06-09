@@ -1,5 +1,13 @@
-export default function validateRegister(/* options = {} */) {
-  return (/* key, newValue, oldValue, changes, content */) => {
-    return true;
-  };
-}
+import {
+  validatePresence,
+  validateFormat,
+} from 'ember-changeset-validations/validators';
+
+export default {
+  name: validatePresence(true),
+  email: [
+    validatePresence(true),
+    validateFormat({type: 'email'}),
+  ],
+  password: validatePresence(true),
+};

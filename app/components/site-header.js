@@ -2,15 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   session: Ember.inject.service(),
+  getUser: Ember.inject.service(),
   tagName: 'header',
 
-  user: Ember.computed('session.{currentUser,isAuthenticated}', function() {
-    if (!this.get('session.currentUser.providerData')) {
-      return {};
-    }
-
-    return this.get('session.currentUser.providerData')[0];
-  }),
+  user: Ember.computed.readOnly('getUser.user'),
 
   actions: {
     signOut() {

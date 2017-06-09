@@ -4,17 +4,16 @@ import lookupValidator from 'ember-changeset-validations';
 import validateLogin from '../validators/login';
 
 export default Ember.Controller.extend({
-  email: '',
-  password: '',
+  fields: {
+    email: '',
+    password: '',
+  },
 
   getUser: Ember.inject.service(),
 
   init() {
     this._super(...arguments);
-    this.changeset = new Changeset({
-      email: '',
-      password: '',
-    }, lookupValidator(validateLogin));
+    this.changeset = new Changeset(this.get('fields'), lookupValidator(validateLogin), validateLogin);
   },
 
   createUser() {

@@ -1,3 +1,4 @@
+{{#with changeset as |changeset|}}
 <div class="register-page">
   <h1>
     {{t 'register.title'}}
@@ -14,7 +15,7 @@
         name="name"
         type="text"
         placeholder=(t 'form.labels.name')
-        value=name
+        value=changeset.name
       }}
     </div>
 
@@ -25,7 +26,7 @@
         name="email"
         type="email"
         placeholder=(t 'form.labels.email')
-        value=email
+        value=changeset.email
       }}
     </div>
 
@@ -36,9 +37,11 @@
         name="password"
         type="password"
         placeholder=(t 'form.labels.password')
-        value=password
+        value=changeset.password
       }}
     </div>
+
+    {{form-errors changeset=changeset}}
 
     <div class="pure-controls">
       <button
@@ -48,4 +51,6 @@
       {{t 'or'}} {{link-to (t 'login.title') "login"}}
     </div>
   </form>
+
 </div>
+{{/with}}
