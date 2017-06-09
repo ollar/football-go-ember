@@ -14,18 +14,22 @@ export default Ember.Component.extend({
     '#bf360c',
     '#3e2723',
   ],
-  initials: Ember.computed('user.{displayName,name}', function() {
-    var displayName = this.get('user').displayName ||
+  name: Ember.computed('user.{displayName,name}', function() {
+    if (Object.keys(this.get('user')).length === 0) return '';
+    return this.get('user').displayName ||
       this.get('user').get('name') || 'anonymous';
-
-    return displayName
+  }),
+  initials: Ember.computed('name', function() {
+    if (!this.get('name')) return '';
+    return this.get('name')
       .split(' ')
       .map(item => item[0].toUpperCase())
       .slice(0,2)
       .join('');
   }),
-  backgroundColour: Ember.computed('initials', function() {
-    var colourNumber = this.get('initials')
+  backgroundColour: Ember.computed('name', function() {
+    if (!this.get('name')) return '';
+    var colourNumber = this.get('name')
       .split('')
       .map((item) => item.charCodeAt())
       .reduce((sum, i) => sum + i);
