@@ -24,20 +24,21 @@ export default Ember.Controller.extend({
 
           this.get('session').register(this.changeset.get('email'), this.changeset.get('password'))
             .then((newPlayer) => {
-              newPlayer.updateProfile({
+              return newPlayer.updateProfile({
                 displayName: this.changeset.get('name'),
-              });
+              })
+              .then(() => {
+                let player = this.get('store').createRecord('player', {
+                  name: this.changeset.get('name'),
+                  photoURL: '',
+                  email: this.changeset.get('email'),
+                });
 
-              let player = this.get('store').createRecord('player', {
-                name: this.changeset.get('name'),
-                photoURL: '',
-                email: this.changeset.get('email'),
+                player.save();
               });
-
-              player.save();
             })
             .then(() => {
-              this.get('session').fetch().then(() => {
+              return this.get('session').fetch().then(() => {
                 this.transitionToRoute('index');
               });
             })
