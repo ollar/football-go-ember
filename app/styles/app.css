@@ -180,3 +180,7 @@ footer{
   width: 100%;
   border: none;
 }
+
+.controls-wrapper{
+  text-align: center;
+}

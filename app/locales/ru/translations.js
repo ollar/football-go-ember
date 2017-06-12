@@ -42,6 +42,8 @@ export default {
 
   buttons: {
     submit: 'Отправить',
+    login: 'Войти',
+    register: 'Зарегистрироваться',
     google_sign_in: 'Вход через Google',
     github_sign_in: 'Вход через Github',
     sign_out: 'Выйти',

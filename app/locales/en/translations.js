@@ -42,6 +42,8 @@ export default {
 
   buttons: {
     submit: 'Submit',
+    login: 'Login',
+    register: 'Register',
     google_sign_in: 'Google Sign In',
     github_sign_in: 'Github Sign In',
     sign_out: 'Sign Out',
