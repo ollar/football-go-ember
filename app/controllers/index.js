@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
     },
   },
 
-  players: Ember.computed.alias('model.match.players'),
+  players: Ember.computed.alias('model.match.players.[]'),
 
   isInTeam: Ember.computed('players', function() {
     return this.get('players').includes(this.model.me);

@@ -17,7 +17,8 @@ export default Ember.Component.extend({
   name: Ember.computed('user.{displayName,name}', function() {
     if (Object.keys(this.get('user')).length === 0) return '';
     return this.get('user').displayName ||
-      this.get('user').get('name') || 'anonymous';
+      (this.get('user').get && this.get('user').get('name')) || 
+      'anonymous';
   }),
   initials: Ember.computed('name', function() {
     if (!this.get('name')) return '';
