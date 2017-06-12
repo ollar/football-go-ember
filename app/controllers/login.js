@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import Changeset from 'ember-changeset';
 import lookupValidator from 'ember-changeset-validations';
-import validateLogin from '../validators/login';
+import validateLogin from '../validations/login';
 
 export default Ember.Controller.extend({
   fields: {
