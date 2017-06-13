@@ -4,24 +4,17 @@ export default Ember.Service.extend({
   session: Ember.inject.service(),
   store: Ember.inject.service(),
   user: Ember.computed('session.isAuthenticated', function() {
-    // if (!this.get('session.currentUser.providerData')) {
-    //   return {};
-    // }
+    let currentUser = {};
 
-    const email = this.get('session.currentUser.email');
-
-    if (!this.get('session.isAuthenticated')) {
-      return {};
+    if (!this.get('session.currentUser.providerData')) {
+      return currentUser;
     }
 
-    return this.get('store').query('player', {
-      orderBy: 'email',
-      equalTo: email,
-    }).then((players) => {
-      return players.get('firstObject');
-    });
+    currentUser = Object.assign({}, this.get('session.currentUser.providerData')[0]);
 
+    currentUser.displayName = currentUser.displayName ||
+      this.get('session.currentUser.displayName');
 
-    // return this.get('session.currentUser.providerData')[0];
+    return currentUser;
   }),
 });
