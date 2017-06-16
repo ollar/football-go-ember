@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
   createUser() {
     var userData = this.get('getUser').get('user');
 
-    this.get('store').query('player', {
+    return this.get('store').query('player', {
       orderBy: 'email',
       equalTo: userData.email,
     }).then((res) => {
@@ -30,8 +30,10 @@ export default Ember.Controller.extend({
           email: userData.email,
         });
 
-        player.save();
+        return player.save();
       }
+
+      return true;
     });
   },
 
@@ -65,9 +67,11 @@ export default Ember.Controller.extend({
             'https://www.googleapis.com/auth/userinfo.profile'
         }
       }).then(() => {
-        this.createUser();
-        this.send('notify', 'info', this.get('i18n').t('messages.welcome_google'));
-        this.transitionToRoute('index');
+        this.createUser()
+          .then(() => {
+            this.send('notify', 'info', this.get('i18n').t('messages.welcome_google'));
+            this.transitionToRoute('index');
+          });
       }).catch((e) => {
         this.send('notify', 'error', e.toString());
       });
@@ -77,9 +81,11 @@ export default Ember.Controller.extend({
       return this.get('session').open('firebase', {
         provider: 'github',
       }).then(() => {
-        this.createUser();
-        this.send('notify', 'info', this.get('i18n').t('messages.welcome_github'));
-        this.transitionToRoute('index');
+        this.createUser()
+          .then(() => {
+            this.send('notify', 'info', this.get('i18n').t('messages.welcome_github'));
+            this.transitionToRoute('index');
+          });
       }).catch((e) => {
         this.send('notify', 'error', e.toString());
       });
