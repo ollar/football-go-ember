@@ -3,17 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   maps: Ember.inject.service(),
 
-  energetiks: Ember.computed('maps', function() {
-    return this.get('maps').createMap(
-      'https://api-maps.yandex.ru/frame/v1/-/CZc2VR3z',
-      'energetiks'
-    );
-  }),
+  energetiksSrc: 'https://static-maps.yandex.ru/1.x/?l=map&pl=30.435479,59.936146,30.435683,59.936151,30.438709,59.935290,30.440619,59.935662,30.443601,59.935667,30.445048,59.936401,30.446013,59.937305,30.446464,59.938490,30.444243,59.939259',
 
-  zanevskij: Ember.computed('maps', function() {
-    return this.get('maps').createMap(
-      'https://api-maps.yandex.ru/frame/v1/-/CZc2VDoM',
-      'zanevskij'
-    );
-  }),
+  zanevskijSrc: 'https://static-maps.yandex.ru/1.x/?l=map&pl=30.443509,59.935475,30.442908,59.935087,30.442264,59.935195,30.442221,59.935496,30.443723,59.935582,30.446341,59.937348,30.446212,59.938533,30.445011,59.938812,30.445397,59.939049,30.443981,59.939243',
 });

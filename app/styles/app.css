@@ -11,9 +11,13 @@ body{
   line-height: 24px;
 }
 
-h1{
+h1, h2, h3{
   font-style: italic;
   font-weight: normal;
+}
+
+h3{
+  margin: 0 0 12px;
 }
 
 .center-wrapper{
