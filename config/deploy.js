@@ -1,31 +1,9 @@
-/* eslint-env node */
+/* jshint node: true */
 
 module.exports = function(deployTarget) {
   var ENV = {
-    build: {},
+    build: {}
     // include other plugin configuration that applies to all deploy targets here
-
-    ssh2: {
-      host: '188.166.36.35',
-      username: 'root',
-      privateKeyPath: '~/.ssh/digitalocean',
-      port: 22,
-      applicationFiles: function(context) {
-        return context.distFiles;
-      },
-      root: '/root/football-go-ember'
-    },
-    // rsync: {
-    //   type: 'rsync',
-    //   dest: '/root/football-go-ember',
-    //   host: 'root@188.166.36.35',
-    //   privateKey: '/Users/bss/.ssh/digitalocean',
-    //   port: 22,
-    //   ssh: true,
-    //   recursive: true,
-    //   delete: true,
-    //   args: ['--verbose', '-ztl']
-    // },
   };
 
   if (deployTarget === 'development') {

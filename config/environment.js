@@ -1,4 +1,5 @@
 /* eslint-env node */
+require('dotenv').config();
 
 module.exports = function(environment) {
   var ENV = {
@@ -23,12 +24,12 @@ module.exports = function(environment) {
     },
 
     firebase: {
-      apiKey: 'AIzaSyApBX1mlccidNVknU6O06oCeSvafPdN1Kc',
-      authDomain: 'footballgo-ember.firebaseapp.com',
-      databaseURL: 'https://footballgo-ember.firebaseio.com',
-      projectId: 'footballgo-ember',
-      storageBucket: 'footballgo-ember.appspot.com',
-      messagingSenderId: '399147350858',
+      apiKey: process.env.FIREBASE_CONNECT_apiKey,
+      authDomain: process.env.FIREBASE_CONNECT_authDomain,
+      databaseURL: process.env.FIREBASE_CONNECT_databaseURL,
+      projectId: process.env.FIREBASE_CONNECT_projectId,
+      storageBucket: process.env.FIREBASE_CONNECT_storageBucket,
+      messagingSenderId: process.env.FIREBASE_CONNECT_messagingSenderId,
     },
     torii: {
       sessionServiceName: 'session'
