@@ -3,6 +3,7 @@
 @import '_register.css';
 @import '_loading.css';
 @import '_notifications.css';
+@import '_profile';
 
 body{
   background-color: #fefefe;
@@ -109,9 +110,13 @@ a, .link{
   background-color: #8c26db;
   color: #fff;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   img{
-    height: 100%;
-    width: auto;
+    flex: 0 1 auto;
+    max-height: 100%;
   }
 }
 

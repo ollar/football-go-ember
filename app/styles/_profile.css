@@ -1,0 +1,39 @@
+.profile {
+  .user-avatar {
+    size: 300px;
+    line-height: 300px;
+    text-align: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 0 2px deepskyblue;
+  }
+
+  .image-drop-area {
+    position: relative;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 0 0 20px;
+  }
+
+  .image-wrapper {
+    &.dragover {
+      .user-avatar{
+        box-shadow: 0 0 0 10px deepskyblue;
+      }
+    }
+  }
+
+  .remove-image {
+    position: absolute;
+    top: calc(50% - 120px);
+    left: calc(50% + 95px);
+    size: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 40px;
+    background-color: #fff;
+    text-decoration: none;
+    border: 2px solid;
+  }
+}

@@ -22,7 +22,7 @@ export default Ember.Controller.extend({
 
   players: Ember.computed.alias('model.players.[]'),
 
-  isInTeam: Ember.computed('players', function() {
+  isInTeam: Ember.computed('players', 'me', function() {
     return this.get('players').includes(this.get('me'));
   }),
 });

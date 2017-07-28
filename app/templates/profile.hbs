@@ -1,3 +1,18 @@
-{{outlet}}
+<div class="profile center-wrapper">
 
-{{model.name}}
+{{#images-drop-area class="image-wrapper" uploadImage=(action 'uploadImage')}}
+  {{avatar-icon user=model}}
+  {{#if isMe}}
+    {{#if model.photoURL}}
+      <a href="" {{action 'removeImage'}} class="remove-image">&times;</a>
+    {{/if}}
+  {{/if}}
+{{/images-drop-area}}
+
+<h1>
+  {{model.name}}
+</h1>
+
+
+{{outlet}}
+</div>
