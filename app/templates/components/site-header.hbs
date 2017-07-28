@@ -3,8 +3,8 @@
   <div class="left-side">
     {{avatar-icon user=user}}
     <div class="user-name">
-      {{#link-to 'profile' user.email}}
-        {{user.displayName}}
+      {{#link-to 'profile' user}}
+        {{user.name}}
       {{/link-to}}
     </div>
   </div>

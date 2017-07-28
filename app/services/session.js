@@ -5,6 +5,8 @@ import ToriiSession from 'torii/services/torii-session';
 export default ToriiSession.extend({
   store: Ember.inject.service(),
 
+  me: {},
+
   init() {
     this._super(...arguments);
 
@@ -15,12 +17,11 @@ export default ToriiSession.extend({
           equalTo: this.get('currentUser.email'),
         }).then((users) => {
           if (users.get('length') === 1) {
-            this.get('store').createRecord('me', users.get('firstObject').toJSON());
+            this.set('me', users.get('firstObject'));
           }
         });
       } else {
-        const user = this.get('store').peekAll('me').get('firstObject');
-        if (user) user.deleteRecord();
+        this.set('me', {});
       }
     });
   },

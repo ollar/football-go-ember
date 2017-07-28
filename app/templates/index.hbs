@@ -6,9 +6,9 @@
   <ol class="players-list">
     {{#each players as |player index|}}
       {{player-item
-        player=player
         index=(add index 1)
-        me=model.me
+        player=player
+        me=me
         changeMind=(action 'changeMind')
       }}
     {{/each}}
