@@ -1,6 +1,10 @@
 <span class="index">{{index}}</span>
-{{avatar-icon user=player}}
+{{#link-to 'profile' player class="profile-link"}}
+  {{avatar-icon user=player}}
+{{/link-to}}
+{{#link-to 'profile' player class="profile-link"}}
 <span>{{player.name}}</span>
+{{/link-to}}
 
 {{#if isMe}}
 <button class="remove" {{action 'changeMind'}}>{{t 'buttons.changed_mind'}}</button>

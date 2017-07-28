@@ -74,6 +74,11 @@ a, .link{
     font-size: 1em;
   }
 
+  .profile-link {
+    text-decoration: none;
+    display: inline-block;
+  }
+
   .remove{
     position: absolute;
     right: 0;
